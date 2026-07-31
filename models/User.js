@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     default:null
   },
-  gitHubId:{
+  githubId:{
     type: String,
     default: null
   },

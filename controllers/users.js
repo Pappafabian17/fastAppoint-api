@@ -48,9 +48,9 @@ const updateUser = async (req, res, next) => {
 
     const updateUser = await User.findByIdAndUpdate(
       req.params.id,
-      {name, email, googleId, gitHubId, role},
-      {new:true, runValidators:true}
-    )
+      { name, email, googleId, githubId, role },
+      { new: true, runValidators: true }
+    );
     if(!updateUser){
       const error = new Error('User not found');
       error.statusCode = 404;
