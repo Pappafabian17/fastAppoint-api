@@ -2,6 +2,7 @@ const User = require("../models/User");
 
 const getAllUsers = async (req, res, next) => {
   try {
+    // #swagger.tags = ['Users']
     const users = await User.find({});
     res.status(200).json(users);
   } catch (error) {
@@ -11,6 +12,7 @@ const getAllUsers = async (req, res, next) => {
 
 const getUserById = async (req, res, next)=>{
   try{
+    // #swagger.tags = ['Users']
     const user = await User.findById(req.params.id);
     if (!user){
       const error = new Error('User not found');
@@ -25,6 +27,7 @@ const getUserById = async (req, res, next)=>{
 
 const createUser = async (req, res, next) => {
   try{
+    // #swagger.tags = ['Users']
     const {name , email, googleId, githubId, role} = req.body;
     const existingUser = await User.findOne({email});
 
@@ -44,6 +47,7 @@ const createUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   try {
+    // #swagger.tags = ['Users']
     const {name, email, googleId, githubId, role} = req.body;
 
     const updateUser = await User.findByIdAndUpdate(
@@ -64,6 +68,7 @@ const updateUser = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
+    // #swagger.tags = ['Users']
     const deletedUser = await User.findByIdAndDelete(req.params.id);
     if(!deletedUser){
       const error = new Error('User not found');

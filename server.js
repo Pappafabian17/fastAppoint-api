@@ -4,24 +4,22 @@ require('dotenv').config();
 
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
-const userRoutes = require('./routes/users');
-const serviceRoutes = require('./routes/services');
+const routes = require('./routes'); 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 connectDB();
+
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); 
 
 app.get('/', (req, res) => {
-  res.send('FastAppoint is working!');
+  res.send('FastAppoint API is working!');
 });
 
-app.use('/users', userRoutes);
-app.use('/services', serviceRoutes);
-
+app.use('/', routes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on PORT: ${PORT}`)
-})
+  console.log(`Server is running on PORT: ${PORT}`);
+});
