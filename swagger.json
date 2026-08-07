@@ -8,8 +8,7 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "paths": {
     "/users/": {
@@ -34,24 +33,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "googleId": {
-                  "example": "any"
-                },
-                "githubId": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -104,24 +86,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "googleId": {
-                  "example": "any"
-                },
-                "githubId": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -179,27 +144,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "durationMinutes": {
-                  "example": "any"
-                },
-                "price": {
-                  "example": "any"
-                },
-                "category": {
-                  "example": "any"
-                },
-                "providerId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Service"
             }
           }
         ],
@@ -252,27 +197,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "durationMinutes": {
-                  "example": "any"
-                },
-                "price": {
-                  "example": "any"
-                },
-                "category": {
-                  "example": "any"
-                },
-                "providerId": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/Service"
             }
           }
         ],
@@ -305,6 +230,416 @@
           "400": {
             "description": "Bad Request"
           }
+        }
+      }
+    },
+    "/appointments/": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/appointments/{id}": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Appointments"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/reviews/": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/reviews/{id}": {
+      "get": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Review"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reviews"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/google/callback": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/login-success": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/login-failure": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "johndoe@example.com"
+        },
+        "role": {
+          "type": "string",
+          "example": "client"
+        }
+      }
+    },
+    "Service": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Premium Haircut"
+        },
+        "description": {
+          "type": "string",
+          "example": "Professional haircut, wash, and styling."
+        },
+        "durationMinutes": {
+          "type": "number",
+          "example": 45
+        },
+        "price": {
+          "type": "number",
+          "example": 35
+        },
+        "category": {
+          "type": "string",
+          "example": "Beauty"
+        },
+        "providerId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac2"
+        }
+      }
+    },
+    "Appointment": {
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac2"
+        },
+        "serviceId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac1"
+        },
+        "providerId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac0"
+        },
+        "appointmentDate": {
+          "type": "string",
+          "example": "2026-08-15T14:30:00Z"
+        },
+        "status": {
+          "type": "string",
+          "example": "pending"
+        },
+        "notes": {
+          "type": "string",
+          "example": "Please wash hair with cold water."
+        }
+      }
+    },
+    "Review": {
+      "type": "object",
+      "properties": {
+        "appointmentId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac9"
+        },
+        "serviceId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac1"
+        },
+        "clientId": {
+          "type": "string",
+          "example": "6a7522059ed31a5944b78ac2"
+        },
+        "rating": {
+          "type": "number",
+          "example": 5
+        },
+        "comment": {
+          "type": "string",
+          "example": "Excellent service! Highly recommended."
         }
       }
     }

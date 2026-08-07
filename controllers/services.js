@@ -29,6 +29,7 @@ const getServiceById = async (req, res, next) => {
 const createService = async (req, res, next) => {
   try {
     // #swagger.tags = ['Services']
+    // #swagger.parameters['body'] = { in: 'body', schema: { $ref: '#/definitions/Service' } }
     const { title, description, durationMinutes, price, category, providerId } = req.body;
     const providerExists = await User.findById(providerId);
     if (!providerExists) {
@@ -48,6 +49,7 @@ const createService = async (req, res, next) => {
 const updateService = async (req, res, next) => {
   try {
     // #swagger.tags = ['Services']
+    // #swagger.parameters['body'] = { in: 'body', schema: { $ref: '#/definitions/Service' } }
     const { title, description, durationMinutes, price, category, providerId } = req.body;
     if (providerId) {
       const providerExists = await User.findById(providerId);

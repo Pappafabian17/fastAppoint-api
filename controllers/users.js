@@ -28,6 +28,7 @@ const getUserById = async (req, res, next)=>{
 const createUser = async (req, res, next) => {
   try{
     // #swagger.tags = ['Users']
+    // #swagger.parameters['body'] = { in: 'body', schema: { $ref: '#/definitions/User' } }
     const {name , email, googleId, githubId, role} = req.body;
     const existingUser = await User.findOne({email});
 
@@ -48,6 +49,7 @@ const createUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     // #swagger.tags = ['Users']
+    // #swagger.parameters['body'] = { in: 'body', schema: { $ref: '#/definitions/User' } }
     const {name, email, googleId, githubId, role} = req.body;
 
     const updateUser = await User.findByIdAndUpdate(
